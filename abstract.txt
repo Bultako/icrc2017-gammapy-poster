@@ -4,7 +4,7 @@ Christoph Deil, Julien Lefaucheur, Léa Jouvin, Régis Terrier, Bruno Khelifi,
 Matthew Wood, Roberta Zanin, Lars Mohrmann, Nachiketa Chakraborty, Jason Watson,
 Rubén López Coto, Stefan Klepser, Jean-Philippe Lenain, Fabio Acero, Santiago
 Pita, Zeljka Bosnjak, Jose Enrique Ruiz for the CTA consortium, Axel Donath,
-Johannes King, Ellis Owen, Manuel Paz Arribas, Brigitta Sipocz
+Johannes King, Ellis Owen, Manuel Paz Arribas, Brigitta Sipocz, Dirk Lennarz
 
 Gammapy is a Python package for high-level gamma-ray data analysis, written in
 Python and built on Numpy, Scipy and Astropy. Starting with event lists and
