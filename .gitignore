@@ -1,0 +1,8 @@
+*.aux
+*.dvi
+*.log
+*.bbl
+*.blg
+*.out
+.fuse*
+temp
