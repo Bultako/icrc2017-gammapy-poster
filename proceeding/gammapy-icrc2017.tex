@@ -9,8 +9,6 @@
 \ShortTitle{Gammapy -- A prototype for the CTA science tools}
 
 \author{
-% TODO: Class PoS Warning: One \speaker{...} must be specified among authors.
-% \speaker{Christoph Deil}$^a$,
 Christoph Deil$^a$,
 Julien Lefaucheur$^b$,
 R\'egis Terrier$^c$,
@@ -22,7 +20,7 @@ Nachiketa Chakraborty$^a$,
 Jason Watson$^a$,
 Rub\'en L\'opez Coto$^a$,
 Stefan Klepser$^f$,
-Matteo Cerruti$^g$,
+\speaker{Matteo Cerruti}$^g$,
 Jean-Philippe Lenain$^g$,
 Fabio Acero$^h$,
 Arache Djannati-Ata{\"\i}$^c$,
@@ -88,24 +86,43 @@ package and show analysis application examples with simulated CTA data.
 \begin{document}
 
 \section{Introduction}
+\label{sec:intro}
 
 TODO: write me!
 
 Astropy \cite{astropy}, Sherpa \cite{todo}, pyfact \cite{pyfact}
 
 \section{Gammapy}
+\label{sec:gammapy}
 
 TODO: write me!
 
 TODO: add figure with dependencies.
 
 \section{Code example}
+\label{sec:code}
 
-TODO: show and explain the events fill into sky image or cube code example and explain.
+An example script using Gammapy is shown in Figure~\ref{fig:code_example}.
 
 Message: Gammapy is high-level Python, data in Numpy arrays, others have written C and Python wrappers already (WCSLib, CFITSIO, SOFA/ERFA).
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\textwidth]{examples/code_events_image}
+\caption{
+An example script using Gammapy to make a counts image from an event list.
+This is used in Section~\ref{sec:code} to explain how Gammapy works.
+TODO: probably should add a \texttt{def fill\_events(events, image)} function
+and use that to illustrate how within Gammapy or in user scripts one can work
+efficiently with events and pixels from Python, using Numpy arrays and
+eventually calling into C extensions.
+}
+\label{fig:code_example}
+\end{figure}
+
+
 \section{Application example}
+\label{sec:application}
 
 TODO: add a CTA analysis example (probably only an image, no spectrum or
 lightcurve yet). See
@@ -114,6 +131,7 @@ or if CTA-DC becomes available, a TS image from the Galactic plane survey would
 be nice.
 
 \section{Conclusions}
+\label{sec:conclusions}
 
 TODO: write me!
 
