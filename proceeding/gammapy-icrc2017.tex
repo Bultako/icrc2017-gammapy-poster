@@ -9,7 +9,8 @@
 \ShortTitle{Gammapy -- A prototype for the CTA science tools}
 
 \author{
-Christoph Deil$^a$,
+% TODO: put Matteo as Speaker?
+\speaker{Christoph Deil}$^a$,
 Julien Lefaucheur$^b$,
 R\'egis Terrier$^c$,
 Bruno Kh\'elifi$^c$,
@@ -20,7 +21,7 @@ Nachiketa Chakraborty$^a$,
 Jason Watson$^a$,
 Rub\'en L\'opez Coto$^a$,
 Stefan Klepser$^f$,
-\speaker{Matteo Cerruti}$^g$,
+Matteo Cerruti$^g$,
 Jean-Philippe Lenain$^g$,
 Fabio Acero$^h$,
 Arache Djannati-Ata{\"\i}$^c$,
@@ -115,7 +116,16 @@ Open data for gamma-ray astronomy \cite{opendata}.
 
 TODO: write me!
 
-TODO: add figure with dependencies.
+Gammapy dependency stack is shown in Figure~\ref{fig:stack}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/gammapy-stack}
+\caption{
+The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with solid arrows, optional dependencies (the rest) with dashed arrows.
+}
+\label{fig:stack}
+\end{figure}
 
 \section{Code example}
 \label{sec:code}
