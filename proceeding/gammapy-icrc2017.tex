@@ -178,14 +178,31 @@ eventually calling into C extensions.
 \section{Application example}
 \label{sec:application}
 
-TODO: add a CTA analysis example (probably only an image, no spectrum or
-lightcurve yet). See
-\url{https://nbviewer.jupyter.org/github/gammapy/gammapy-extra/blob/master/notebooks/cta\_data\_analysis.ipynb}
-or if CTA-DC becomes available, a TS image from the Galactic plane survey would
-be nice.
+In this poster we focused on the software and technical aspects of Gammapy. For
+examples of CTA science studies using Gammapy, we refer you to other posters presented at this conference: Galactic survey \cite{roberta}, PeVatrons \cite{cyril} and extra-galactic sources \cite{julien}.
 
-For further application examples see e.g. \cite{julien, roberta, cyril},
-as well as \url{http://docs.gammapy.org}.
+Several other examples using real data from H.E.S.S. and Fermi-LAT, as well as
+simulated data for CTA can be found via \url{http://docs.gammapy.org} by
+following the link to ``tutorial notebooks''. Figure~\ref{fig:app} shows one
+result of the ``CTA data analysis with Gammapy'' notebook: a significance sky
+image of the Galactic center region using 1.5~hours of simulated CTA data. The
+background was estimated using the ring background estimation technique, and
+peaks above 5~sigma are shows with white circles.
+
+% \url{https://nbviewer.jupyter.org/github/gammapy/gammapy-extra/blob/master/notebooks/cta\_data\_analysis.ipynb}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/gammapy_example_sky_image.png}
+\caption{
+Application example: significance image for the Galactic centre region using 1.5~hours of simulated CTA data.  White circles are peaks above 5~sigma.
+}
+\label{fig:app}
+\end{figure}
+
+
+
+
 
 \section{Conclusions}
 \label{sec:conclusions}
