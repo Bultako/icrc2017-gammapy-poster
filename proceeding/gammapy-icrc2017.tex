@@ -164,10 +164,7 @@ developments before Astropy existed and are based on C++/SWIG are now actively
 looking for ways to collaborate and make their software stack interoperate with
 Numpy and Astropy to avoid code duplication, but also to leverage the fact that
 a large fraction of the astronomical community already knows and is using
-Astropy \cite{lsst}, and that a huge eco-system of scientific Python packages
-becomes available for advanced users if the data is exposed as Numpy arrays
-(e.g. healpy, pandas, Scipy, scikit-image, scikit-learn, iminuit, emcee,
-\ldots).
+Astropy \cite{lsst}.
 
 % Comparison to Gammalib, ctools
 Another open-source package that has been proposed as a prototype for the CTA
@@ -198,16 +195,19 @@ of events to IRFs to support multiple event types will have to be extended
 \section{Gammapy package}
 \label{sec:gammapy}
 
-TODO: write me, keep it very short!
+Gammapy is a Python package built on Numpy \cite{numpy}, Scipy \cite{scipy} and
+Astropy \cite{astropy}. Optional dependencies are Scipy for integration and
+interpolation, and Sherpa \cite{sherpa2001, sherpa2009, sherpa2011} for modeling
+and fitting and Matplotlib \cite{matplotlib} for plotting. The Gammapy
+dependency stack is shown in Figure~\ref{fig:stack}.
 
-Gammapy dependency stack is shown in Figure~\ref{fig:stack}
-
-Numpy \cite{numpy}
-Scipy \cite{scipy}
-Matplotlib \cite{matplotlib}
-
-Astropy \cite{astropy}
-Sherpa \cite{sherpa2001, sherpa2009, sherpa2011}
+The functionality is organized into sub-packages, such as for example {\it
+gammapy.data}, {\it gammapy.irf}, {\it gammapy.spectrum}, \ldots . The Gammapy
+features are described in detail in the Gammapy documentation at
+\url{http://docs.gammapy.org} and many examples given in the tutorial-style
+Jupyter notebooks, as well as in \cite{gammapy-icrc2015}. Here, we wanted to
+focus on Gammapy as a prototype software and will continue in the next section
+with a code example explaining how Gammapy works.
 
 \begin{figure}[t]
 \centering
@@ -221,27 +221,29 @@ The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with 
 \section{How Gammapy works: a code example}
 \label{sec:code}
 
-TODO: clean up this section!
-
-An example script using Gammapy is shown in Figure~\ref{fig:code_example}, that
-generates a counts image from an event list. The remarkable point we would like
-to make here is that it is possible to efficiently work with events and pixels
-and to implement algorithms from Python, by storing all data in Numpy arrays and
-processing via calls into existing C extensions in Numpy and Astropy. E.g. here
-EventList stores the RA and DEC columns from the event list as arrays, and
-SkyImage the pixel data as well, and {\it image.fill(events)}, and all
-processing happens in existing C extensions (Numpy histograms and Astropy calls
-into the CFITSIO and WCSLib C libraries). Should the need arise, that some
-algorithm can’t be efficiently implemented in pure Python, a small C extension
-can be added to Gammapy, using e.g. Cython \cite{cython}.
-
-Gammapy is high-level Python, data in Numpy arrays, others have written
-C and Python wrappers already. Specifically, {\it astropy.wcs} is calling into
-WCSLib (\cite{wcslib}), {it astropy.io.fits} uses CFITSIO (\cite{cfitsio}) and
-{\it astropy.coordinates} as well as {\it astropy.time} are built on ERFA
-(\url{https://github.com/liberfa/erfa}), the open-source variant of this IAU
-Standards of Fundamental Astronomy (SOFA) C library
+Gammapy is written high-level Python code, the data is stored in Numpy arrays or
+objects such as {\it astropy.coordinates.SkyCoord} or {\it astropy.table.Table}
+that hold Numpy array data members. Almost all functionality needed has been
+written in C and Python wrappers already. Specifically, {\it astropy.wcs} is
+calling into WCSLib (\cite{wcslib}), {it astropy.io.fits} uses CFITSIO
+(\cite{cfitsio}) and {\it astropy.coordinates} as well as {\it astropy.time} are
+built on ERFA (\url{https://github.com/liberfa/erfa}), the open-source variant
+of this IAU Standards of Fundamental Astronomy (SOFA) C library
 (\url{http://www.iausofa.org/}).
+
+An example script that generates a counts image from an event list using Gammapy
+is shown in Figure~\ref{fig:code_example}. The remarkable point we would like to
+make here is that it is possible to efficiently work with events and pixels and
+to implement algorithms from Python, by storing all data in Numpy arrays and
+processing via calls into existing C extensions in Numpy and Astropy. E.g. here
+{\it EventList} stores the RA and DEC columns from the event list as Numpy
+arrays, and {\it SkyImage} the pixel data as well, and {\it image.fill(events)},
+and all processing happens in existing C extensions (Numpy histograms and
+Astropy calls into the CFITSIO and WCSLib C libraries). Should the need arise,
+that some algorithm can't be efficiently implemented in pure Python, a small C
+extension can be added to Gammapy, using e.g. Cython \cite{cython}.
+
+We note that a huge eco-system of scientific Python packages that operate on Numpy arrays is available for advanced users, to implement analysis methods for special use cases (e.g. sky or background models, IRF handling or likelihood or Bayesian analysis methods). To name just a few that we have seen used in conjunction with Gammapy so far (by users, not within the Gammapy package itself): healpy, Scipy, pandas, scikit-image, scikit-learn, iminuit, emcee.
 
 \begin{figure}[t]
 \centering
