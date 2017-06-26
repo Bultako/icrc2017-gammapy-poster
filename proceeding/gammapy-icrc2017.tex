@@ -76,7 +76,7 @@ So far Gammapy has mostly been used to analyse data from H.E.S.S. and Fermi-LAT,
 and now it is being used for the simulation and analysis of observations from
 the Cherenkov Telescope Array (CTA). We have proposed Gammapy as a prototype for
 the CTA science tools. This contribution will give an overview of the Gammapy
-package and show analysis application examples with simulated CTA data.
+package and show an analysis application example with simulated CTA data.
 
 }
 
@@ -206,8 +206,10 @@ gammapy.data}, {\it gammapy.irf}, {\it gammapy.spectrum}, \ldots . The Gammapy
 features are described in detail in the Gammapy documentation at
 \url{http://docs.gammapy.org} and many examples given in the tutorial-style
 Jupyter notebooks, as well as in \cite{gammapy-icrc2015}. Here, we wanted to
-focus on Gammapy as a prototype software and will continue in the next section
-with a code example explaining how Gammapy works.
+focus on Gammapy as a software package and a new approach to build the CTA
+science tools. So instead of listing the currently available functionality here,
+we will continue in the next section with a code example explaining how Gammapy
+works.
 
 \begin{figure}[t]
 \centering
@@ -259,11 +261,13 @@ arrays and passed to existing C extensions in Numpy and Astropy.
 
 \section{Gammapy development}
 
-TODO: write me, keep it very short!
-
-For testing we use pytest (\url{https://pytest.org}). For documentation Sphinx
+Gammapy development happens on Github
+(\url{https://github.com/gammapy/gammapy}). We make extensive use of the pull
+request system to discuss and review code contributions. For testing we use
+pytest (\url{https://pytest.org}), for continuous integration travis-ci (Linux
+and Mac) as well as Appveyor (Windows). For documentation Sphinx
 (\url{http://www.sphinx-doc.org}), for tutorial-style documentation Jupyter
-notebooks (\url{https://jupyter.org/}).
+notebooks (\url{https://jupyter.org/}) are used.
 
 Gammapy is distributed and installed in the usual way for Python packages. Each
 stable release is uploaded to the Python package index
@@ -278,16 +282,17 @@ is available as a Gentoo package
 (\url{https://packages.gentoo.org/packages/dev-python/gammapy}) and a Debian
 package is in preparation.
 
-Mailing list: \url{https://groups.google.com/forum/\#!forum/gammapy} and for
-Gammapy developer team communication \url{gammapy.slack.com}. Roughly bi-yearly
-Gammapy meetings, so far focused on developers and advanced users (Heidelberg,
-June 2016 and Paris in Feb 2017). TODO: mention code review, continuous
-integration, coverage and other code quality things.
+A public mailing list for Gammapy is available at
+\url{https://groups.google.com/forum/\#!forum/gammapy} and for Gammapy developer
+team communication we use Slack \url{gammapy.slack.com}. Two face-to-face
+meetings for Gammapy were organized so far, the first on in June 2016 in
+Heidelberg as a coding sprint for developers only, the second on in February
+2017 in Paris as a workshop for both Gammapy users and developers.
 
 Note that the current setup described in this section is different from what it
 will be if Gammapy is chosen to be the or part of the CTA science tools, since
 CTA will set up their own systems for software development, maintenance,
-testing, documentation, issue tracking, support and distribution.
+testing, documentation, issue tracking, software distribution and user support.
 
 \section{Application example}
 \label{sec:application}
