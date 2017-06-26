@@ -90,8 +90,26 @@ package and show analysis application examples with simulated CTA data.
 \section{Introduction}
 \label{sec:intro}
 
-TODO: write me!
+% CTA science tools
+The Cherenkov Telescope Array (CTA) will observe the sky in very-high-energy
+gamma-ray light soon. All astronomers will have access to CTA high-level data,
+as well as CTA science tools (ST) software. The ST can be used for example to
+generate sky images and to measure source properties such as morphology, spectra
+and light curves, using event lists as well as instrument response function
+(IRF) and auxiliary information as input.
 
+% Gammapy
+Gammapy is a prototype for the CTA ST, built on the scientific Python stack and
+Astropy, optionally using Sherpa or other packages for modeling and fitting (see
+Figure~\ref{fig:stack}). Initially the focus was to implement the “classical TeV
+analysis”, using 2- dimensional sky images for detection and morphology
+characterization, followed by spectral analysis for a given source region. A
+3-dimensional analysis with a simultaneous spatial and spectral models of the
+gamma-ray emission, as well as background is in development. Further
+developments and verification using data from existing Cherenkov telescope
+arrays such as H.E.S.S. and MAGIC, as well as simulated CTA data is ongoing.
+
+% Context
 pyfact \cite{pyfact}
 naima \cite{naima}
 3ML \cite{3ml}
@@ -146,7 +164,10 @@ Gammapy is available as a Gentoo package
 (\url{https://packages.gentoo.org/packages/dev-python/gammapy}) and a Debian
 package is in preparation.
 
-Mailing list: \url{https://groups.google.com/forum/\#!forum/gammapy} and for Gammapy developer team communication \url{gammapy.slack.com}.
+Mailing list: \url{https://groups.google.com/forum/\#!forum/gammapy} and for
+Gammapy developer team communication \url{gammapy.slack.com}. Roughly bi-yearly
+Gammapy meetings, so far focused on developers and advanced users (Heidelberg,
+June 2016 and Paris in Feb 2017).
 
 Note that the current setup described in this section is different from what it
 will be if Gammapy is chosen to be the or part of the CTA science tools, since
@@ -164,12 +185,10 @@ Message: Gammapy is high-level Python, data in Numpy arrays, others have written
 \centering
 \includegraphics[width=0.5\textwidth]{examples/code_events_image}
 \caption{
-An example script using Gammapy to make a counts image from an event list.
-This is used in Section~\ref{sec:code} to explain how Gammapy works.
-TODO: probably should add a \texttt{def fill\_events(events, image)} function
-and use that to illustrate how within Gammapy or in user scripts one can work
-efficiently with events and pixels from Python, using Numpy arrays and
-eventually calling into C extensions.
+An example script using Gammapy to make a counts image from an event list. This
+is used in Section~\ref{sec:code} to explain how Gammapy achieves efficient
+processing of event and pixel data from Python: all data is stored in Numpy
+arrays and passed to existing C extensions in Numpy and Astropy.
 }
 \label{fig:code_example}
 \end{figure}
@@ -200,16 +219,25 @@ Application example: significance image for the Galactic centre region using 1.5
 \label{fig:app}
 \end{figure}
 
-
-
-
-
 \section{Conclusions}
 \label{sec:conclusions}
 
-TODO: write me!
+In the past two years, we have developed Gammapy as an open-source analysis
+package for existing gamma-ray telescope and as a prototype for the CTA science
+tools.
 
-Briefly discuss Gammapy approach pro / con here or above?
+We find that the Gammapy approach, to build on the powerful and well-tested
+Python packages Numpy and Astropy, brings large benefits: A small codebase that
+is focused on gamma-ray astronomy in a single high-level language is easy to
+understand and maintain. It is also easy to modify and extend as new use cases
+arise, which is important for CTA, since it can be expected that the modeling of
+the instrument, background and astrophysical emission, as well as the analysis
+method in general (e.g. likelihood or Bayesian statistical methods) will evolve
+and improve over the next decade. Last but not least, the Gammapy approach is
+inherently collaborative, sharing development effort as well as know-how with
+the larger astronomical community, that to a large degree already has adopted
+Numpy and Astropy as the basis for astronomical analysis codes in the past 5
+years.
 
 \section{Acknowledgements}
 \label{sed:acknowledgements}
