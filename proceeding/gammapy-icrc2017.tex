@@ -92,12 +92,6 @@ package and show analysis application examples with simulated CTA data.
 
 TODO: write me!
 
-Numpy \cite{numpy}
-Scipy \cite{scipy}
-Matplotlib \cite{matplotlib}
-
-Astropy \cite{astropy}
-Sherpa \cite{sherpa2001, sherpa2009, sherpa2011}
 pyfact \cite{pyfact}
 naima \cite{naima}
 3ML \cite{3ml}
@@ -108,16 +102,22 @@ gamma-ray telescopes \cite{hgps, shells} as well as the Fermi-LAT space
 telescope \cite{owen2015}, as well as for CTA \cite{julien, roberta, cyril}.
 
 ctapipe: \url{https://github.com/cta-observatory/ctapipe}
-conda, pip
 
 Open data for gamma-ray astronomy \cite{opendata}.
 
-\section{Gammapy}
+\section{Gammapy package}
 \label{sec:gammapy}
 
 TODO: write me!
 
 Gammapy dependency stack is shown in Figure~\ref{fig:stack}
+
+Numpy \cite{numpy}
+Scipy \cite{scipy}
+Matplotlib \cite{matplotlib}
+
+Astropy \cite{astropy}
+Sherpa \cite{sherpa2001, sherpa2009, sherpa2011}
 
 \begin{figure}[t]
 \centering
@@ -127,6 +127,31 @@ The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with 
 }
 \label{fig:stack}
 \end{figure}
+
+\section{Gammapy development}
+
+For testing we use pytest \url{https://pytest.org}.
+For documentation Sphinx \url{http://www.sphinx-doc.org}.
+
+Gammapy is distributed and installed in the usual way for Python packages. Each
+stable release is uploaded to the Python package index
+(\url{https://pypi.python.org}), and downloaded and installed by users via
+{\it pip install gammapy} (\url{https://pip.pypa.io}). Binary packages for
+conda are available via the conda Astropy channel
+(\url{https://anaconda.org/astropy/gammapy}) for Linux, Mac and Windows, which
+conda users can install via {\it conda install gammapy -c astropy}. Binary
+packages for the Macports package manager are also available, which users can
+install via {\it port install gammapy}. Concerning Linux, at this time,
+Gammapy is available as a Gentoo package
+(\url{https://packages.gentoo.org/packages/dev-python/gammapy}) and a Debian
+package is in preparation.
+
+Mailing list: \url{https://groups.google.com/forum/\#!forum/gammapy} and for Gammapy developer team communication \url{gammapy.slack.com}.
+
+Note that the current setup described in this section is different from what it
+will be if Gammapy is chosen to be the or part of the CTA science tools, since
+CTA will set up their own systems for software development, maintenance,
+testing, documentation, issue tracking, support and distribution.
 
 \section{Code example}
 \label{sec:code}
@@ -172,7 +197,10 @@ Briefly discuss Gammapy approach pro / con here or above?
 \section{Acknowledgements}
 \label{sed:acknowledgements}
 
-This work was conducted in the context of the CTA Consortium.
+This work was conducted in the context of the CTA Consortium. We gratefully
+acknowledge financial support from the agencies and organizations listed here:
+% TODO: the underscore doesn't work here -> not a link in the PDF. Why and how to fix?
+\url{http://www.cta-observatory.org/consortium\_acknowledgments}
 
 We would like to thank the Scientific Python and specifically the Astropy
 community for providing their packages which are invaluable to the development
