@@ -202,8 +202,8 @@ and fitting and Matplotlib \cite{matplotlib} for plotting. The Gammapy
 dependency stack is shown in Figure~\ref{fig:stack}.
 
 The functionality is organized into sub-packages, such as for example {\it
-gammapy.data}, {\it gammapy.irf}, {\it gammapy.spectrum}, \ldots . The Gammapy
-features are described in detail in the Gammapy documentation at
+gammapy.data},\linebreak{\it gammapy.irf}, {\it gammapy.spectrum}, \ldots .
+The Gammapy features are described in detail in the Gamma\-py documentation at
 \url{http://docs.gammapy.org} and many examples given in the tutorial-style
 Jupyter notebooks, as well as in \cite{gammapy-icrc2015}. Here, we wanted to
 focus on Gammapy as a software package and a new approach to build the CTA
@@ -227,10 +227,10 @@ Gammapy is written high-level Python code, the data is stored in Numpy arrays or
 objects such as {\it astropy.coordinates.SkyCoord} or {\it astropy.table.Table}
 that hold Numpy array data members. Almost all functionality needed has been
 written in C and Python wrappers already. Specifically, {\it astropy.wcs} is
-calling into WCSLib (\cite{wcslib}), {it astropy.io.fits} uses CFITSIO
+calling into WCSLib (\cite{wcslib}), {\it astropy.io.fits} uses CFITSIO
 (\cite{cfitsio}) and {\it astropy.coordinates} as well as {\it astropy.time} are
 built on ERFA (\url{https://github.com/liberfa/erfa}), the open-source variant
-of this IAU Standards of Fundamental Astronomy (SOFA) C library
+of the IAU Standards of Fundamental Astronomy (SOFA) C library\linebreak
 (\url{http://www.iausofa.org/}).
 
 An example script that generates a counts image from an event list using Gammapy
