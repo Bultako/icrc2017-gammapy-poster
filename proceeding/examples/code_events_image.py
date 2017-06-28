@@ -7,5 +7,5 @@ image = SkyImage.empty(
   xref=83.6, yref=22.0,
   coordsys='CEL', proj='TAN',
 )
-image.fill(events)
+image.fill_events(events)
 image.write('counts.fits')
