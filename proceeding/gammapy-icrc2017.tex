@@ -116,9 +116,18 @@ package and show an analysis application example with simulated CTA data.
 \section{Introduction}
 \label{sec:intro}
 
-% CTA science tools
+% CTA and CTA science tools introduction
 The Cherenkov Telescope Array (CTA) will observe the sky in very-high-energy
-(VHE, E > 20$\,$GeV) gamma-ray light soon. All astronomers will have access to
+(VHE, E > 20$\,$GeV) gamma-ray light soon. CTA will consist of large telescope
+arrays at two sites, one in the southern (Chile) and one in the northern (La
+Palma) hemisphere. It will perform surveys of large parts of the sky, targeted
+observations on Galactic and extra-galactic sources, and more specialized
+analyses like a measurement of charged cosmic rays, constraints on the
+intergalactic medium opacity for gamma-rays and a search for dark matter.
+Compared to current Cherenkov telescope arrays such as H.E.S.S., VERITAS or
+MAGIC, CTA will have a much improved detection area, angular and energy
+resolution, improved signal/background classification and sensitivity. CTA is
+expected to operate for thirty years, and all astronomers will have access to
 CTA high-level data, as well as CTA science tools (ST) software. The ST can be
 used for example to generate sky images and to measure source properties such as
 morphology, spectra and light curves, using event lists as well as instrument
@@ -126,21 +135,14 @@ response function (IRF) and auxiliary information as input.
 
 % What is Gammapy?
 Gammapy is a prototype for the CTA ST, built on the scientific Python stack and
-Astropy, optionally using Sherpa or other packages for modeling and fitting (see
+Astropy \cite{astropy}, optionally using Sherpa \cite{sherpa2001, sherpa2009,
+sherpa2011} or other packages for modeling and fitting (see
 Figure~\ref{fig:stack}). Initially, the focus was to implement the ``classical
 TeV analysis'', using 2-dimensional sky images for source detection and
-morphology fitting, followed by spectral analysis for a given extraction region.
-A 3\hbox{-}dimensional analysis with simultaneous spatial and spectral models of
-the gamma-ray emission, as well as a background model (called ``cube analysis''
-in the following) is in development. At the moment, likelihood fitting in
-Gammapy is done on binned data (images, spectra, cubes, lightcurves), unbinned
-likelihood is not implemented. Observation simulation is done by
-Poisson-fluctuating predicted counts according to given sky models, IRFs and
-observation parameters, event samplers are not implemented. So far we have not
-encountered important use cases that require an unbinned likelihood, but if
-needed for efficient analysis of some use cases, a likelihood function using
-unbinned events or sparse or multi-resolution maps could be added in the future.
-
+morphology fitting, followed by spectral analysis for a given source region. A
+3\hbox{-}dimensional analysis with a simultaneous spatial and spectral model of
+the gamma-ray emission, as well as background (called ``cube analysis'' in the
+following) is in development.
 % Existing studies using Gammapy
 A first study comparing spectra obtained with the classical 1D analysis and the
 3D cube analysis using point source observations with H.E.S.S., to compare the
@@ -151,6 +153,16 @@ arrays such as H.E.S.S. and MAGIC, as well as simulated CTA data is ongoing.
 Gammapy is starting to be used for scientific studies for existing ground-based
 gamma-ray telescopes \cite{hgps, shells}, the Fermi-LAT space telescope
 \cite{owen2015}, as well as for CTA \cite{julien, roberta, cyril}.
+
+% Outline of this paper
+In this paper we focus on the software and technical aspects of Gammapy. We
+start with a brief overview of the context in Section~\ref{sec:context},
+followed by a description of the Gammapy package in Section~\ref{sec:package}
+and a code example and explanation of how Gammapy works and how it can be used
+in Section~\ref{sec:code}. Finally, Section~\ref{sec:dev} describes aspects of
+the Gammapy project like code development, testing and review as well as package
+distribution and support for users, and Section~\ref{sec:conclusions} presents
+our conclusions concerning Gammapy as as CTA science tool prototype.
 
 \section{Context}
 \label{sec:context}
@@ -217,7 +229,7 @@ of events to IRFs to support multiple event types will have to be extended
 \cite{opendata}, a process Gammapy is participating in and contributing to.
 
 \section{Gammapy package}
-\label{sec:gammapy}
+\label{sec:package}
 
 Gammapy is a Python package built on Numpy \cite{numpy}, Scipy \cite{scipy} and
 Astropy \cite{astropy}. Optional dependencies are Scipy for integration and
@@ -287,6 +299,7 @@ arrays and passed to existing C extensions in Numpy and Astropy.
 \end{figure}
 
 \section{Gammapy development}
+\label{sec:dev}
 
 Gammapy development happens on Github (\urlGammapyGithub). We make extensive use
 of the pull request system to discuss and review code contributions. For testing
