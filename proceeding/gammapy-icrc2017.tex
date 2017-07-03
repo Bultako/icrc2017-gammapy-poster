@@ -1,9 +1,33 @@
 \documentclass{PoS}
 
+\newcommand{\url}[1]{\href{#1}{#1}}
+
 % Shortcuts
 \newcommand{\aap}{AAP}
 \newcommand{\pasp}{PASP}
-\newcommand{\url}[1]{\href{#1}{#1}}
+
+\newcommand{\urlGammapySlack}{\href{https://gammapy.slack.com}{gammapy.slack.com}}
+\newcommand{\urlCtaPipe}{\href{https://github.com/cta-observatory/ctapipe}{github.com/cta-observatory/ctapipe}}
+\newcommand{\urlPint}{\href{https://github.com/nanograv/PINT}{github.com/nanograv/PINT}}
+\newcommand{\urlFermipy}{\href{https://github.com/fermipy/fermipy}{github.com/fermipy/fermipy}}
+\newcommand{\urlGammapyDocs}{\href{http://docs.gammapy.org}{docs.gammapy.org}}
+\newcommand{\urlErfa}{\href{https://github.com/liberfa/erfa}{github.com/liberfa/erfa}}
+\newcommand{\urlSofa}{\href{http://www.iausofa.org}{www.iausofa.org}}
+\newcommand{\urlGammapyGithub}{\href{https://github.com/gammapy/gammapy}{github.com/gammapy/gammapy}}
+\newcommand{\urlPytest}{\href{https://pytest.org}{pytest.org}}
+\newcommand{\urlSphinx}{\href{http://www.sphinx-doc.org}{www.sphinx-doc.org}}
+\newcommand{\urlJupyter}{\href{https://jupyter.org}{jupyter.org}}
+\newcommand{\urlPypi}{\href{https://pypi.python.org}{pypi.python.org}}
+\newcommand{\urlPip}{\href{https://pip.pypa.io}{pip.pypa.io}}
+\newcommand{\urlAnacondaGammapy}{\href{https://anaconda.org/astropy/gammapy}{anaconda.org/astropy/gammapy}}
+\newcommand{\urlGentooGammapy}{\href{https://packages.gentoo.org/packages/dev-python/gammapy}{packages.gentoo.org/packages/dev-python/gammapy}}
+\newcommand{\urlGammapyForum}{\href{https://groups.google.com/forum/\#!forum/gammapy}{groups.google.com/forum/\#!forum/gammapy}}
+\newcommand{\urlCtaAck}{\href{http://www.cta-observatory.org/consortium_acknowledgments}{www.cta-observatory.org/consortium\_acknowledgments}}
+\newcommand{\urlGithub}{\href{https://github.com}{github.com}}
+\newcommand{\urlRtd}{\href{https://readthedocs.org}{readthedocs.org}}
+\newcommand{\urlTravis}{\href{https://travis-ci.org}{travis-ci.org}}
+\newcommand{\urlAppveyor}{\href{https://appveyor.com}{appveyor.com}}
+\newcommand{\urlSlack}{\href{https://slack.com}{slack.com}}
 
 \title{Gammapy -- A prototype for the CTA science tools}
 \ShortTitle{Gammapy -- A prototype for the CTA science tools}
@@ -92,29 +116,29 @@ package and show an analysis application example with simulated CTA data.
 \label{sec:intro}
 
 % CTA science tools
-The Cherenkov Telescope Array (CTA) will observe the sky in very-high-energy (VHE, E > 20$\,$GeV)
-gamma-ray light soon. All astronomers will have access to CTA high-level data,
-as well as CTA science tools (ST) software. The ST can be used for example to
-generate sky images and to measure source properties such as morphology, spectra
-and light curves, using event lists as well as instrument response function
-(IRF) and auxiliary information as input.
+The Cherenkov Telescope Array (CTA) will observe the sky in very-high-energy
+(VHE, E > 20$\,$GeV) gamma-ray light soon. All astronomers will have access to
+CTA high-level data, as well as CTA science tools (ST) software. The ST can be
+used for example to generate sky images and to measure source properties such as
+morphology, spectra and light curves, using event lists as well as instrument
+response function (IRF) and auxiliary information as input.
 
 % What is Gammapy?
 Gammapy is a prototype for the CTA ST, built on the scientific Python stack and
 Astropy, optionally using Sherpa or other packages for modeling and fitting (see
 Figure~\ref{fig:stack}). Initially, the focus was to implement the ``classical
-TeV analysis'', using 2-dimensional sky images for source detection and morphology
-fitting, followed by spectral analysis for a given extraction region. A
-3\hbox{-}dimensional analysis with simultaneous spatial and spectral models of the
-gamma-ray emission, as well as a background model (called ``cube analysis'' in the
-following) is in development. At the moment, likelihood fitting in Gammapy is
-done on binned data (images, spectra, cubes, lightcurves), unbinned likelihood
-is not implemented. Observation simulation is done by Poisson-fluctuating
-predicted counts according to given sky models, IRFs and observation parameters,
-event samplers are not implemented. So far we have not encountered important use
-cases that require an unbinned likelihood, but if needed for efficient analysis
-of some use cases, a likelihood function using unbinned events or sparse or
-multi-resolution maps could be added in the future.
+TeV analysis'', using 2-dimensional sky images for source detection and
+morphology fitting, followed by spectral analysis for a given extraction region.
+A 3\hbox{-}dimensional analysis with simultaneous spatial and spectral models of
+the gamma-ray emission, as well as a background model (called ``cube analysis''
+in the following) is in development. At the moment, likelihood fitting in
+Gammapy is done on binned data (images, spectra, cubes, lightcurves), unbinned
+likelihood is not implemented. Observation simulation is done by
+Poisson-fluctuating predicted counts according to given sky models, IRFs and
+observation parameters, event samplers are not implemented. So far we have not
+encountered important use cases that require an unbinned likelihood, but if
+needed for efficient analysis of some use cases, a likelihood function using
+unbinned events or sparse or multi-resolution maps could be added in the future.
 
 % Existing studies using Gammapy
 A first study comparing spectra obtained with the classical 1D analysis and the
@@ -135,24 +159,22 @@ Before moving on to a description of Gammapy in the next section, we would like
 to give some context for its development and mention some related projects. An
 early prototype package that was similar to Gammapy was ``PyFACT: Python and
 FITS Analysis for Cherenkov Telescopes'' \cite{pyfact}. It was developed in
-2011/2012 and hasn't been updated since, we mainly mention it as a first 
-idea to build the CTA science tools as a Python package using Numpy. In 2011,
-the Astronomical Python community came together and created the Astropy project
-and package \cite{astropy}, which is a key factor making Python the most popular
+2011/2012 and hasn't been updated since, we mainly mention it as a first  idea
+to build the CTA science tools as a Python package using Numpy. In 2011, the
+Astronomical Python community came together and created the Astropy project and
+package \cite{astropy}, which is a key factor making Python the most popular
 language for astronomical research codes (at least according to this informal
 survey \cite{momcheva2015}). Gammapy is an Astropy affiliated package, which
 means that where possible it uses the Astropy core package instead of
-duplicating its functionality, as well as having a certain quality standard
-such as having automated tests and documentation for the available
-functionality. In recent years, several other packages have adopted the same
-approach, to build on Python, Numpy and Astropy. To name just a few, there is
-ctapipe (\url{https://github.com/cta-observatory/ctapipe}), the prototype for
-the low-level CTA data processing pipeline (up to DL3); Naima for modeling the
-non-thermal spectral energy distribution of astrophysical sources \cite{naima};
-and PINT, a new software for high-precision pulsar timing
-(\url{https://github.com/nanograv/PINT}), and Fermipy
-(\url{https://github.com/fermipy/fermipy}), a Python package that facilitates
-and analysis of data from the Large Area Telescope (LAT) with the Fermi Science
+duplicating its functionality, as well as having a certain quality standard such
+as having automated tests and documentation for the available functionality. In
+recent years, several other packages have adopted the same approach, to build on
+Python, Numpy and Astropy. To name just a few, there is ctapipe (\urlCtaPipe),
+the prototype for the low-level CTA data processing pipeline (up to DL3); Naima
+for modeling the non-thermal spectral energy distribution of astrophysical
+sources \cite{naima}; and PINT, a new software for high-precision pulsar timing
+(\urlPint), and Fermipy (\urlFermipy), a Python package that facilitates and
+analysis of data from the Large Area Telescope (LAT) with the Fermi Science
 Tools and adds some extra functionality.
 
 We note that many other astronomy projects have chosen Python/Astropy as the
@@ -203,14 +225,13 @@ and fitting and Matplotlib \cite{matplotlib} for plotting. The Gammapy
 dependency stack is shown in Figure~\ref{fig:stack}.
 
 The functionality is organized into sub-packages, such as for example {\it
-gammapy.data},\linebreak{\it gammapy.irf}, {\it gammapy.spectrum}, \ldots .
-The Gammapy features are described in detail in the Gamma\-py documentation at
-\url{http://docs.gammapy.org} and many examples given in the tutorial-style
-Jupyter notebooks, as well as in \cite{gammapy-icrc2015}. Here, we wanted to
-focus on Gammapy as a software package and a new approach to build the CTA
-science tools. So instead of listing the currently available functionality here,
-we will continue in the next section with a code example explaining how Gammapy
-works.
+gammapy.data},\linebreak{\it gammapy.irf}, {\it gammapy.spectrum}, \ldots . The
+Gammapy features are described in detail in the Gamma\-py documentation
+(\urlGammapyDocs) and many examples given in the tutorial-style Jupyter
+notebooks, as well as in \cite{gammapy-icrc2015}. Here, we wanted to focus on
+Gammapy as a software package and a new approach to build the CTA science tools.
+So instead of listing the currently available functionality here, we will
+continue in the next section with a code example explaining how Gammapy works.
 
 \begin{figure}[t]
 \centering
@@ -230,9 +251,8 @@ that hold Numpy array data members. Almost all functionality needed has been
 written in C and Python wrappers already. Specifically, {\it astropy.wcs} is
 calling into WCSLib (\cite{wcslib}), {\it astropy.io.fits} uses CFITSIO
 (\cite{cfitsio}) and {\it astropy.coordinates} as well as {\it astropy.time} are
-built on ERFA (\url{https://github.com/liberfa/erfa}), the open-source variant
-of the IAU Standards of Fundamental Astronomy (SOFA) C library\linebreak
-(\url{http://www.iausofa.org/}).
+built on ERFA (\urlErfa), the open-source variant of the IAU Standards of
+Fundamental Astronomy (SOFA) C library\linebreak (\urlSofa).
 
 An example script that generates a counts image from an event list using Gammapy
 is shown in Figure~\ref{fig:code_example}. The point we want to
@@ -262,33 +282,27 @@ arrays and passed to existing C extensions in Numpy and Astropy.
 
 \section{Gammapy development}
 
-Gammapy development happens on Github
-(\url{https://github.com/gammapy/gammapy}). We make extensive use of the pull
-request system to discuss and review code contributions. For testing we use
-pytest (\url{https://pytest.org}), for continuous integration travis-ci (Linux
-and Mac) as well as Appveyor (Windows). For documentation Sphinx
-(\url{http://www.sphinx-doc.org}), for tutorial-style documentation Jupyter
-notebooks (\url{https://jupyter.org/}) are used.
+Gammapy development happens on Github (\urlGammapyGithub). We make extensive use
+of the pull request system to discuss and review code contributions. For testing
+we use pytest (\urlPytest), for continuous integration travis-ci (Linux and Mac)
+as well as Appveyor (Windows). For documentation Sphinx (\urlSphinx), for
+tutorial-style documentation Jupyter notebooks (\urlJupyter) are used.
 
 Gammapy is distributed and installed in the usual way for Python packages. Each
-stable release is uploaded to the Python package index
-(\url{https://pypi.python.org}), and downloaded and installed by users via {\it
-pip install gammapy} (\url{https://pip.pypa.io}). Binary packages for conda are
-available via the conda Astropy channel
-(\url{https://anaconda.org/astropy/gammapy}) for Linux, Mac and Windows, which
-conda users can install via {\it conda install gammapy -c astropy}. Binary
-packages for the Macports package manager are also available, which users can
-install via {\it port install gammapy}. Concerning Linux, at this time, Gammapy
-is available as a Gentoo package
-(\url{https://packages.gentoo.org/packages/dev-python/gammapy}) and a Debian
-package is in preparation.
+stable release is uploaded to the Python package index (\urlPypi), and
+downloaded and installed by users via {\it pip install gammapy} (\urlPip).
+Binary packages for conda are available via the conda Astropy channel
+(\urlAnacondaGammapy) for Linux, Mac and Windows, which conda users can install
+via {\it conda install gammapy -c astropy}. Binary packages for the Macports
+package manager are also available, which users can install via {\it port
+install gammapy}. On Linux, at this time, Gammapy is available as a Gentoo
+package (\urlGentooGammapy) and a Debian package is in preparation.
 
-A public mailing list for Gammapy is available at
-\url{https://groups.google.com/forum/\#!forum/gammapy} and for Gammapy developer
-team communication we use Slack \url{gammapy.slack.com}. Two face-to-face
-meetings for Gammapy were organized so far, the first on in June 2016 in
-Heidelberg as a coding sprint for developers only, the second on in February
-2017 in Paris as a workshop for both Gammapy users and developers.
+A public mailing list for Gammapy is available (\urlGammapyForum) and for
+Gammapy developer team communication we use Slack (\urlGammapySlack). Two
+face-to-face meetings for Gammapy were organized so far, the first on in June
+2016 in Heidelberg as a coding sprint for developers only, the second on in
+February 2017 in Paris as a workshop for both Gammapy users and developers.
 
 Note that the current setup described in this section is different from what it
 will be if Gammapy is chosen to be the or part of the CTA science tools, since
@@ -302,12 +316,12 @@ In this poster we focused on the software and technical aspects of Gammapy. For
 examples of CTA science studies using Gammapy, we refer you to other posters presented at this conference: Galactic survey \cite{roberta}, PeVatrons \cite{cyril} and extra-galactic sources \cite{julien}.
 
 Several other examples using real data from H.E.S.S. and Fermi-LAT, as well as
-simulated data for CTA can be found via \url{http://docs.gammapy.org} by
-following the link to ``tutorial notebooks''. Figure~\ref{fig:app} shows one
-result of the ``CTA data analysis with Gammapy'' notebook: a significance sky
-image of the Galactic center region using 1.5~hours of simulated CTA data. The
-background was estimated using the ring background estimation technique, and
-peaks above 5~sigma are shows with white circles.
+simulated data for CTA can be found via \urlGammapyDocs\ by following the link
+to ``tutorial notebooks''. Figure~\ref{fig:app} shows one result of the ``CTA
+data analysis with Gammapy'' notebook: a significance sky image of the Galactic
+center region using 1.5~hours of simulated CTA data. The background was
+estimated using the ring background estimation technique, and peaks above
+5~sigma are shows with white circles.
 
 % \url{https://nbviewer.jupyter.org/github/gammapy/gammapy-extra/blob/master/notebooks/cta\_data\_analysis.ipynb}
 
@@ -344,20 +358,18 @@ years.
 \label{sed:acknowledgements}
 
 This work was conducted in the context of the CTA Consortium. We gratefully
-acknowledge financial support from the agencies and organizations listed here:
-% TODO: the underscore doesn't work here -> not a link in the PDF. Why and how to fix?
-\url{http://www.cta-observatory.org/consortium\_acknowledgments}
+acknowledge financial support from the agencies and organizations listed here:\\
+\urlCtaAck
 
 We would like to thank the Scientific Python and specifically the Astropy
 community for providing their packages which are invaluable to the development
 of Gammapy, as well as tools and help with package setup and continuous
 integration, as well as building of conda packages.
 
-We thank the GitHub (\url{http://www.github.com}) team for providing us with an
-excellent free development platform, ReadTheDocs (\url{https://readthedocs.org})
-for free documentation hosting, Travis (\url{https://www.travis-ci.org}) and
-Appveyor (\url{https://appveyor.com}) for free continuous integration testing,
-and Slack (\url{https://slack.com/}) for a free team communication channel.
+We thank the GitHub (\urlGithub) team for providing us with an excellent free
+development platform, ReadTheDocs (\urlRtd) for free documentation hosting,
+Travis (\urlTravis) and Appveyor (\urlAppveyor) for free continuous integration
+testing, and Slack (\urlSlack) for a free team communication channel.
 
 \bibliography{gammapy-icrc2017}
 \bibliographystyle{JHEP}
