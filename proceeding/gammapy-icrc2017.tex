@@ -158,10 +158,12 @@ gamma-ray telescopes \cite{hgps, shells}, the Fermi-LAT space telescope
 \centering
 \includegraphics[width=0.7\textwidth]{figures/gammapy-stack}
 \caption{
-The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with
-solid arrows, optional dependencies (the rest) with dashed arrows.
+The Gammapy software stack. Required dependencies (Python, Numpy and Astropy)
+are illustrated with solid arrows, optional dependencies (Scipy and Sherpa) with
+dashed arrows.
 }
-\label{fig:stack} \end{figure}
+\label{fig:stack}
+\end{figure}
 
 % Outline of this paper
 In this writeup we focus on the software and technical aspects of Gammapy. We
@@ -175,64 +177,82 @@ Section~\ref{sec:conclusions}.
 \label{sec:context}
 
 % Python, Numpy, Astropy
-Before moving on to a description of Gammapy in the next section, we would like
-to give some context for its development and mention some related projects. An
-early prototype package that was similar to Gammapy was ``PyFACT: Python and
-FITS Analysis for Cherenkov Telescopes'' \cite{pyfact}. It was developed in
-2011/2012 and hasn't been updated since, we mainly mention it as a first  idea
-to build the CTA science tools as a Python package using Numpy. In 2011, the
-Astronomical Python community came together and created the Astropy project and
-package \cite{astropy}, which is a key factor making Python the most popular
-language for astronomical research codes (at least according to this informal
-analysis \cite{perry} and survey \cite{momcheva2015}). Gammapy is an Astropy
-affiliated package, which means that where possible it uses the Astropy core
-package instead of duplicating its functionality, as well as having a certain
-quality standard such as having automated tests and documentation for the
-available functionality. In recent years, several other packages have adopted
-the same approach, to build on Python, Numpy and Astropy. To name just a few,
-there is ctapipe (\urlCtaPipe), the prototype for the low-level CTA data
-processing pipeline (up to DL3); Naima for modeling the non-thermal spectral
-energy distribution of astrophysical sources \cite{naima}; and PINT, a new
-software for high-precision pulsar timing (\urlPint), and Fermipy (\urlFermipy),
-a Python package that facilitates and analysis of data from the Large Area
-Telescope (LAT) with the Fermi Science Tools and adds some extra functionality.
+Prior to Gammapy, in 2011/2012, a collection of Python scripts for the analysis
+of IACT data was released as a first test of open-source VHE data analysis
+software: ``PyFACT: Python and FITS Analysis for Cherenkov Telescopes''
+\cite{pyfact}. It has not been updated since, but we mention it to show that the
+idea to build the CTA science tools as a Python package using Numpy and Scipy
+started with the CTA project. In 2011, the astronomical Python community came
+together and created the Astropy project and package \cite{astropy}, which is a
+key factor making Python the most popular language for astronomical research
+codes (at least according to this informal analysis \cite{perry} and survey
+\cite{momcheva2015}). Gammapy is an Astropy affiliated package, which means that
+where possible it uses the Astropy core package instead of duplicating its
+functionality, as well as having a certain quality standard such as having
+automated tests and documentation for the available functionality. In recent
+years, several other packages have adopted the same approach, to build on
+Python, Numpy and Astropy. To name just a few, there is ctapipe (\urlCtaPipe),
+the prototype for the low-level CTA data processing pipeline (up to the creation
+of lists of events and IRFs); Naima for modeling the non-thermal spectral energy
+distribution of astrophysical sources \cite{naima}; PINT, a new software for
+high-precision pulsar timing (\urlPint), and Fermipy (\urlFermipy), a Python
+package that facilitates analysis of data from the Large Area Telescope (LAT)
+with the Fermi Science Tools and adds some extra functionality.
 
 We note that many other astronomy projects have chosen Python and Astropy as the
-basis both for their data calibration and reduction pipeline as well as the
-science tools used by astronomers. Some prominent examples are the Hubble space
-telescope (HST) \cite{hubble}, the upcoming James Webb Space Telescope (JWST)
-\cite{jwst} and the Chandra X-ray observatory \cite{sherpa2001, chandra}. Even
-projects like LSST that started their analysis software developments before
-Astropy existed and are based on C++/SWIG are now actively looking for ways to
-collaborate and make their software stack interoperate with Numpy and Astropy to
-avoid code duplication, but also to leverage the fact that a large fraction of
-the astronomical community already knows and is using Astropy \cite{lsst}.
+basis both for their data calibration and reduction pipelines and their science
+tools. Some prominent examples are the Hubble space telescope (HST)
+\cite{hubble}, the upcoming James Webb Space Telescope (JWST) \cite{jwst} and
+the Chandra X-ray observatory \cite{sherpa2001, chandra}. Even projects like
+LSST that started their analysis software developments before Astropy existed
+and are based on C++/SWIG are now actively working towards making their software
+interoperable with Numpy and Astropy, to avoid duplication of code and
+development efforts, but also to reduce the learning curve for their science
+tool software (since many astronomers already are using Python, Numpy and
+Astropy) \cite{lsst}.
 
 % Comparison to Gammalib, ctools
-Another open-source package that has been proposed as a prototype for the CTA
-science tools is Gammalib/ctools \cite{ctools}. Gammalib is a C++ library with
-SWIG Python wrappers that doesn't have any dependencies besides CFITSIO, instead
-implementing the functionality needed from scratch. ctools is a set of command
-line tools, following the FTOOLs model of using FITS files as input and output
-and being able to chain them into analysis chains using Python. Concerning
-analysis methods, Gammalib/ctools is supporting binned and unbinned likelihood
-analysis and implemented ``cube analysis'' first, adding support for ``classical
-analysis'' now (the other way around compared to Gammapy).
+% Another open-source package that has been proposed as a prototype for the CTA
+% science tools is Gammalib/ctools \cite{ctools}. Gammalib is a C++ library with
+% SWIG Python wrappers that doesn't have any dependencies besides CFITSIO, instead
+% implementing the functionality needed from scratch. ctools is a set of command
+% line tools, following the FTOOLs model of using FITS files as input and output
+% and being able to chain them into analysis chains using Python. Concerning
+% analysis methods, Gammalib/ctools is supporting binned and unbinned likelihood
+% analysis and implemented ``cube analysis'' first, adding support for ``classical
+% analysis'' now (the other way around compared to Gammapy).
+
+% The choice for the official CTA science tools, supported and distributed by the
+% CTA observatory, has not been made yet; at this time both Gammapy and
+% Gammalib/ctools are open-source codes being used for CTA as well as exiting
+% gamma-ray telescopes. 
 
 % Open data formats
-The choice for the official CTA science tools, supported and distributed by the
-CTA observatory, has not been made yet; at this time both Gammapy and
-Gammalib/ctools are open-source codes being used for CTA as well as exiting
-gamma-ray telescopes. One issue noticed in the past years was that in the
-current situation of having multiple telescopes converting their data to FITS
-format and multiple science tools, it became necessary to write down the details
-of the data formats being used. At this time, the data formats used in existing
-science tool codes (Gammapy, Gammalib/ctools and partly also others, like
-Fermipy, 3ML \cite{3ml} or Naima \cite{naima}) are to a large degree the same,
-although one has to mention that the development of the DL3 data model and
-formats is work in progress, and especially the IRF formats and DL3 data linking
-of events to IRFs to support multiple event types will have to be extended
-\cite{opendata}, a process Gammapy is participating in and contributing to.
+For current ground-based IACTs, data and software are mostly private to the
+collaborations operating the telescopes. CTA will be, for the first time in VHE
+gamma-ray astronomy, operated as an open observatory. This implies fundamentally
+different requirements for the data formats and software tools. Along this path,
+the current experiments, H.E.S.S., MAGIC and VERITAS, have started converting
+their data to FITS format, yet relying on different (some private, some open)
+analysis tools. To ensure compatibility it became necessary to write down the
+details of the data format and to a large extent it is now the same, although
+one has to mention that the development of the CTA high-level data model and
+formats is work in progress. In particular the methods to link events to IRFs
+will have to be extended to support multiple event types and the IRF and
+background model formats will have to be extended to be more precise
+\cite{opendata}. Gammapy is participating in and contributing to this effort to
+prototype and find a good high-level data model and formats for CTA.
+
+% One issue noticed in the past years was that in the current situation of having
+% multiple telescopes converting their data to FITS format and multiple science
+% tools, it became necessary to write down the details of the data formats being
+% used. At this time, the data formats used in existing science tool codes
+% (Gammapy, Gammalib/ctools and partly also others, like Fermipy, 3ML \cite{3ml}
+% or Naima \cite{naima}) are to a large degree the same, although one has to
+% mention that the development of the DL3 data model and formats is work in
+% progress, and especially the IRF formats and DL3 data linking of events to IRFs
+% to support multiple event types will have to be extended \cite{opendata}, a
+% process Gammapy is participating in and contributing to.
 
 \section{Gammapy package}
 \label{sec:package}
