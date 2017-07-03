@@ -184,30 +184,29 @@ to build the CTA science tools as a Python package using Numpy. In 2011, the
 Astronomical Python community came together and created the Astropy project and
 package \cite{astropy}, which is a key factor making Python the most popular
 language for astronomical research codes (at least according to this informal
-survey \cite{momcheva2015}). Gammapy is an Astropy affiliated package, which
-means that where possible it uses the Astropy core package instead of
-duplicating its functionality, as well as having a certain quality standard such
-as having automated tests and documentation for the available functionality. In
-recent years, several other packages have adopted the same approach, to build on
-Python, Numpy and Astropy. To name just a few, there is ctapipe (\urlCtaPipe),
-the prototype for the low-level CTA data processing pipeline (up to DL3); Naima
-for modeling the non-thermal spectral energy distribution of astrophysical
-sources \cite{naima}; and PINT, a new software for high-precision pulsar timing
-(\urlPint), and Fermipy (\urlFermipy), a Python package that facilitates and
-analysis of data from the Large Area Telescope (LAT) with the Fermi Science
-Tools and adds some extra functionality.
+analysis \cite{perry} and survey \cite{momcheva2015}). Gammapy is an Astropy
+affiliated package, which means that where possible it uses the Astropy core
+package instead of duplicating its functionality, as well as having a certain
+quality standard such as having automated tests and documentation for the
+available functionality. In recent years, several other packages have adopted
+the same approach, to build on Python, Numpy and Astropy. To name just a few,
+there is ctapipe (\urlCtaPipe), the prototype for the low-level CTA data
+processing pipeline (up to DL3); Naima for modeling the non-thermal spectral
+energy distribution of astrophysical sources \cite{naima}; and PINT, a new
+software for high-precision pulsar timing (\urlPint), and Fermipy (\urlFermipy),
+a Python package that facilitates and analysis of data from the Large Area
+Telescope (LAT) with the Fermi Science Tools and adds some extra functionality.
 
-We note that many other astronomy projects have chosen Python/Astropy as the
+We note that many other astronomy projects have chosen Python and Astropy as the
 basis both for their data calibration and reduction pipeline as well as the
 science tools used by astronomers. Some prominent examples are the Hubble space
-telescope (HST) (TODO: add reference), the upcoming James Webb Space Telescope
-(JWST) (TODO: add reference) and the Chandra X-ray observatory \cite{chandra,
-sherpa2001}. Even projects like LSST that started their analysis software
-developments before Astropy existed and are based on C++/SWIG are now actively
-looking for ways to collaborate and make their software stack interoperate with
-Numpy and Astropy to avoid code duplication, but also to leverage the fact that
-a large fraction of the astronomical community already knows and is using
-Astropy \cite{lsst}.
+telescope (HST) \cite{hubble}, the upcoming James Webb Space Telescope (JWST)
+\cite{jwst} and the Chandra X-ray observatory \cite{sherpa2001, chandra}. Even
+projects like LSST that started their analysis software developments before
+Astropy existed and are based on C++/SWIG are now actively looking for ways to
+collaborate and make their software stack interoperate with Numpy and Astropy to
+avoid code duplication, but also to leverage the fact that a large fraction of
+the astronomical community already knows and is using Astropy \cite{lsst}.
 
 % Comparison to Gammalib, ctools
 Another open-source package that has been proposed as a prototype for the CTA
