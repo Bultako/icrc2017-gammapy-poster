@@ -154,15 +154,22 @@ Gammapy is starting to be used for scientific studies for existing ground-based
 gamma-ray telescopes \cite{hgps, shells}, the Fermi-LAT space telescope
 \cite{owen2015}, as well as for CTA \cite{julien, roberta, cyril}.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/gammapy-stack}
+\caption{
+The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with
+solid arrows, optional dependencies (the rest) with dashed arrows.
+}
+\label{fig:stack} \end{figure}
+
 % Outline of this paper
-In this paper we focus on the software and technical aspects of Gammapy. We
+In this writeup we focus on the software and technical aspects of Gammapy. We
 start with a brief overview of the context in Section~\ref{sec:context},
-followed by a description of the Gammapy package in Section~\ref{sec:package}
-and a code example and explanation of how Gammapy works and how it can be used
-in Section~\ref{sec:code}. Finally, Section~\ref{sec:dev} describes aspects of
-the Gammapy project like code development, testing and review as well as package
-distribution and support for users, and Section~\ref{sec:conclusions} presents
-our conclusions concerning Gammapy as as CTA science tool prototype.
+followed by a description of the Gammapy package in Section~\ref{sec:package},
+the Gammapy project in Section~\ref{sec:project} and finally our conclusions
+concerning Gammapy as as CTA science tool prototype in
+Section~\ref{sec:conclusions}.
 
 \section{Context}
 \label{sec:context}
@@ -246,17 +253,8 @@ Gammapy as a software package and a new approach to build the CTA science tools.
 So instead of listing the currently available functionality here, we will
 continue in the next section with a code example explaining how Gammapy works.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\textwidth]{figures/gammapy-stack}
-\caption{
-The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with
-solid arrows, optional dependencies (the rest) with dashed arrows.
-}
-\label{fig:stack} \end{figure}
-
-\section{How Gammapy works: a code example}
-\label{sec:code}
+% \section{How Gammapy works: a code example}
+% \label{sec:code}
 
 Gammapy is written high-level Python code, the data is stored in Numpy arrays or
 objects such as {\it astropy.coordinates.SkyCoord} or {\it astropy.table.Table}
@@ -291,45 +289,15 @@ itself): healpy, Scipy, pandas, scikit-image, scikit-learn, iminuit, emcee.
 \includegraphics[width=0.5\textwidth]{examples/code_events_image}
 \caption{
 An example script using Gammapy to make a counts image from an event list. This
-is used in Section~\ref{sec:code} to explain how Gammapy achieves efficient
+is used in Section~\ref{sec:package} to explain how Gammapy achieves efficient
 processing of event and pixel data from Python: all data is stored in Numpy
 arrays and passed to existing C extensions in Numpy and Astropy.
 }
 \label{fig:code_example}
 \end{figure}
 
-\section{Gammapy development}
-\label{sec:dev}
-
-Gammapy development happens on Github (\urlGammapyGithub). We make extensive use
-of the pull request system to discuss and review code contributions. For testing
-we use pytest (\urlPytest), for continuous integration travis-ci (Linux and Mac)
-as well as Appveyor (Windows). For documentation Sphinx (\urlSphinx), for
-tutorial-style documentation Jupyter notebooks (\urlJupyter) are used.
-
-Gammapy is distributed and installed in the usual way for Python packages. Each
-stable release is uploaded to the Python package index (\urlPypi), and
-downloaded and installed by users via {\it pip install gammapy} (\urlPip).
-Binary packages for conda are available via the conda Astropy channel
-(\urlAnacondaGammapy) for Linux, Mac and Windows, which conda users can install
-via {\it conda install gammapy -c astropy}. Binary packages for the Macports
-package manager are also available, which users can install via {\it port
-install gammapy}. On Linux, at this time, Gammapy is available as a Gentoo
-package (\urlGentooGammapy) and a Debian package is in preparation.
-
-A public mailing list for Gammapy is available (\urlGammapyForum) and for
-Gammapy developer team communication we use Slack (\urlGammapySlack). Two
-face-to-face meetings for Gammapy were organized so far, the first on in June
-2016 in Heidelberg as a coding sprint for developers only, the second on in
-February 2017 in Paris as a workshop for both Gammapy users and developers.
-
-Note that the current setup described in this section is different from what it
-will be if Gammapy is chosen to be the or part of the CTA science tools, since
-CTA will set up their own systems for software development, maintenance,
-testing, documentation, issue tracking, software distribution and user support.
-
-\section{Application example}
-\label{sec:application}
+% \section{Application example}
+% \label{sec:application}
 
 In this poster we focused on the software and technical aspects of Gammapy. For
 examples of CTA science studies using Gammapy, we refer you to other posters
@@ -354,12 +322,49 @@ Application example: significance image for the Galactic centre region using
 \label{fig:app}
 \end{figure}
 
+\section{Gammapy project}
+\label{sec:project}
+
+In this section we describe the current setup of the Gammapy project. We are using the common tools and services for Python open-source projects for software
+development, code review, testing, documentation, package distribution and user
+support.
+
+Gammapy development happens on Github (\urlGammapyGithub). We make extensive use
+of the pull request system to discuss and review code contributions. For testing
+we use pytest (\urlPytest), for continuous integration Travis-CI (Linux and Mac)
+as well as Appveyor (Windows). For documentation Sphinx (\urlSphinx), for
+tutorial-style documentation Jupyter notebooks (\urlJupyter) are used.
+
+Gammapy is distributed and installed in the usual way for Python packages. Each
+stable release is uploaded to the Python package index (\urlPypi), and
+downloaded and installed by users via {\it pip install gammapy} (\urlPip).
+Binary packages for conda are available via the conda Astropy channel
+(\urlAnacondaGammapy) for Linux, Mac and Windows, which conda users can install
+via {\it conda install gammapy -c astropy}. Binary packages for the Macports
+package manager are also available, which users can install via {\it port
+install gammapy}. At this time, Gammapy is also available as a Gentoo Linux
+package (\urlGentooGammapy) and a Debian Linux package is in preparation.
+
+For Gammapy developer team communication we use Slack (\urlGammapySlack). A
+public mailing list for user support and discussion is available
+(\urlGammapyForum). Two face-to-face meetings for Gammapy were organized so far,
+the first on in June 2016 in Heidelberg as a coding sprint for developers only,
+the second on in February 2017 in Paris as a workshop for both Gammapy users and
+developers.
+
+% Note that the current setup described in this section is different from what it
+% will be if Gammapy is chosen to be the or part of the CTA science tools, since
+% CTA will set up their own systems for software development, maintenance,
+% testing, documentation, issue tracking, software distribution and user support.
+
 \section{Conclusions}
 \label{sec:conclusions}
 
 In the past two years, we have developed Gammapy as an open-source analysis
 package for existing gamma-ray telescope and as a prototype for the CTA science
-tools.
+tools. Gammapy is a Python package, consisting of functions and classes that can
+be used as a flexible and extensible toolbox to implement and execute high-level
+gamma-ray data analyses.
 
 We find that the Gammapy approach, to build on the powerful and well-tested
 Python packages Numpy and Astropy, brings large benefits: A small codebase that
