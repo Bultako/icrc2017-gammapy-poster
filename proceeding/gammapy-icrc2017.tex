@@ -237,10 +237,10 @@ continue in the next section with a code example explaining how Gammapy works.
 \centering
 \includegraphics[width=0.7\textwidth]{figures/gammapy-stack}
 \caption{
-The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with solid arrows, optional dependencies (the rest) with dashed arrows.
+The Gammapy stack. Required dependencies Numpy and Astropy are illustrated with
+solid arrows, optional dependencies (the rest) with dashed arrows.
 }
-\label{fig:stack}
-\end{figure}
+\label{fig:stack} \end{figure}
 
 \section{How Gammapy works: a code example}
 \label{sec:code}
@@ -266,7 +266,12 @@ Astropy calls into the CFITSIO and WCSLib C libraries). Should the need arise,
 that some algorithm can't be efficiently implemented in pure Python, a small C
 extension can be added to Gammapy, using e.g. Cython \cite{cython}.
 
-We note that a huge eco-system of scientific Python packages that operate on Numpy arrays is available for advanced users, to implement analysis methods for special use cases (e.g. sky or background models, IRF handling or likelihood or Bayesian analysis methods). To name just a few that we have seen used in conjunction with Gammapy so far (by users, not within the Gammapy package itself): healpy, Scipy, pandas, scikit-image, scikit-learn, iminuit, emcee.
+We note that a huge eco-system of scientific Python packages that operate on
+Numpy arrays is available for advanced users, to implement analysis methods for
+special use cases (e.g. sky or background models, IRF handling or likelihood or
+Bayesian analysis methods). To name just a few that we have seen used in
+conjunction with Gammapy so far (by users, not within the Gammapy package
+itself): healpy, Scipy, pandas, scikit-image, scikit-learn, iminuit, emcee.
 
 \begin{figure}[t]
 \centering
@@ -313,7 +318,9 @@ testing, documentation, issue tracking, software distribution and user support.
 \label{sec:application}
 
 In this poster we focused on the software and technical aspects of Gammapy. For
-examples of CTA science studies using Gammapy, we refer you to other posters presented at this conference: Galactic survey \cite{roberta}, PeVatrons \cite{cyril} and extra-galactic sources \cite{julien}.
+examples of CTA science studies using Gammapy, we refer you to other posters
+presented at this conference: Galactic survey \cite{roberta}, PeVatrons
+\cite{cyril} and extra-galactic sources \cite{julien}.
 
 Several other examples using real data from H.E.S.S. and Fermi-LAT, as well as
 simulated data for CTA can be found via \urlGammapyDocs\ by following the link
@@ -323,13 +330,12 @@ center region using 1.5~hours of simulated CTA data. The background was
 estimated using the ring background estimation technique, and peaks above
 5~sigma are shows with white circles.
 
-% \url{https://nbviewer.jupyter.org/github/gammapy/gammapy-extra/blob/master/notebooks/cta\_data\_analysis.ipynb}
-
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/gammapy_example_sky_image.png}
 \caption{
-Application example: significance image for the Galactic centre region using 1.5~hours of simulated CTA data.  White circles are peaks above 5~sigma.
+Application example: significance image for the Galactic centre region using
+1.5~hours of simulated CTA data.  White circles are peaks above 5~sigma.
 }
 \label{fig:app}
 \end{figure}
