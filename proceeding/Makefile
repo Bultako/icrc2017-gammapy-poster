@@ -1,4 +1,4 @@
-TARGET=gammapy-icrc2017_v2
+TARGET=gammapy-icrc2017
 LATEX=pdflatex
 BIBTEX=bibtex
 
