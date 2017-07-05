@@ -268,7 +268,7 @@ reconstructed events (with an arrival direction and an energy) that are
 classified according to their types (e.g. gamma-like, cosmic-ray-like). 
 In the data processing chain of CTA, the reconstruction and classification 
 of events are realized by an other Python package, ctapipe\footnote{\urlCtaPipe}. Data are stored in FITS format. 
-The high-level analysis consists on: 
+The high-level analysis consists of: 
 \vspace{-0.3cm}
 \begin{itemize}
 \setlength\itemsep{-0.5em}
@@ -281,7 +281,6 @@ or from a model (template to be built on real data beforehand),
 \item spectrum measurement with a 1D analysis or with a 3D analysis by adjusting both spectral and spatial shape of gamma-ray sources,
 \item computation of light-curves and phasograms, search for transient signal,
 \item derivation of a catalog of excess peaks (or a source catalog).
-
 \end{itemize}
 \vspace{-0.28cm}
 For such an analysis, Gammapy is using the IRFs produced by the ctapipe  package and 
@@ -393,12 +392,6 @@ In this section we describe the current setup of the Gammapy project. We are usi
 development, code review, testing, documentation, package distribution and user
 support.
 
-Gammapy development happens on Github (\urlGammapyGithub). We make extensive use
-of the pull request system to discuss and review code contributions. For testing
-we use pytest (\urlPytest), for continuous integration Travis-CI (Linux and Mac)
-as well as Appveyor (Windows). For documentation Sphinx (\urlSphinx), for
-tutorial-style documentation Jupyter notebooks (\urlJupyter) are used.
-
 Gammapy is distributed and installed in the usual way for Python packages. Each
 stable release is uploaded to the Python package index (\urlPypi), and
 downloaded and installed by users via {\it pip install gammapy} (\urlPip).
@@ -409,19 +402,26 @@ package manager are also available, which users can install via {\it port
 install gammapy}. At this time, Gammapy is also available as a Gentoo Linux
 package (\urlGentooGammapy) and a Debian Linux package is in preparation.
 
-For Gammapy developer team communication we use Slack (\urlGammapySlack). A
-public mailing list for user support and discussion is available
-(\urlGammapyForum). Two face-to-face meetings for Gammapy were organized so far,
-the first on in June 2016 in Heidelberg as a coding sprint for developers only,
-the second on in February 2017 in Paris as a workshop for both Gammapy users and
-developers.
+Gammapy development happens on Github (\urlGammapyGithub). We make extensive use
+of the pull request system to discuss and review code contributions. For testing
+we use pytest (\urlPytest), for continuous integration Travis-CI (Linux and Mac)
+as well as Appveyor (Windows). For documentation Sphinx (\urlSphinx), for
+tutorial-style documentation Jupyter notebooks (\urlJupyter) are used. For
+Gammapy developer team communication we use Slack (\urlGammapySlack). A public
+mailing list for user support and discussion is available (\urlGammapyForum).
+Two face-to-face meetings for Gammapy were organized so far, the first on in
+June 2016 in Heidelberg as a coding sprint for developers only, the second on in
+February 2017 in Paris as a workshop for both Gammapy users and developers.
 
 % Note that the current setup described in this section is different from what it
 % will be if Gammapy is chosen to be the or part of the CTA science tools, since
 % CTA will set up their own systems for software development, maintenance,
 % testing, documentation, issue tracking, software distribution and user support.
 
-{\bf BKH: Add a status here... on the functionalities... done, under dev., to be dev.}
+Gammapy is under very active development, especially in the area of modeling,
+and in the implementation of a simple-to-use, high-level end-user interface
+(either config file driven or command line tools). We will write a paper on
+Gammapy later this year and are working towards a version 1.0 release.
 
 \section{Conclusions}
 \label{sec:conclusions}
@@ -440,14 +440,12 @@ arise, which is important for CTA, since it can be expected that the modeling of
 the instrument, background and astrophysical emission, as well as the analysis
 method in general (e.g. likelihood or Bayesian statistical methods) will evolve
 and improve over the next decade. Last but not least, the Gammapy approach is
-inherently collaborative {\bf CB TO BE CHECKED }($~$30 people community of developers){\bf CB }, 
-sharing development effort as well as know-how with the larger astronomical community, 
-that to a large degree already has adopted
-Numpy and Astropy as the basis for astronomical analysis codes in the past 5
-years.
+inherently collaborative (contributions from $~$30 gamma-ray astronomers so
+far),  sharing development effort as well as know-how with the larger
+astronomical community,  that to a large degree already has adopted Numpy and
+Astropy as the basis for astronomical analysis codes in the past 5 years.
 
-\section{Acknowledgements}
-\label{sed:acknowledgements}
+\section{Acknowledgements} \label{sed:acknowledgements}
 
 This work was conducted in the context of the CTA Consortium. We gratefully
 acknowledge financial support from the agencies and organizations listed here:\\
