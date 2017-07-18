@@ -273,10 +273,10 @@ astrophysical quantities.
 
 The Gammapy code base is structured into several sub-packages dedicated to
 specific classes  where each of the packages bundle corresponding functionality
-in a namespace (e.g. data and observation handling ``gammapy.data'', IRF
-functionality ``gammapy.irf'', spectrum  estimation and modeling
-``gammapy.spectrum'' \ldots). The Gammapy features are described in detail in
-the Gammapy documentation (\urlGammapyDocs) and many examples given in the
+in a namespace (e.g. data and observation handling in \textit{gammapy.data}, IRF
+functionality in \textit{gammapy.irf}, spectrum estimation and modeling in
+\textit{gammapy.spectrum} \ldots). The Gammapy features are described in detail
+in the Gammapy documentation (\urlGammapyDocs) and many examples given in the
 tutorial-style Jupyter notebooks, as well as in \cite{gammapy-icrc2015}.
 Figure~\ref{fig:app} shows one result of the ``CTA data analysis with Gammapy''
 notebook: a significance sky image of the Galactic center region using 1.5~hours
@@ -291,34 +291,36 @@ notebooks''.
  
 The Gammapy Python package is primarily built on Numpy \cite{numpy}, and Astropy
 \cite{astropy} as core dependencies. Data is stored in Numpy arrays or objects
-such as {\it astropy.coordinates.SkyCoord} or {\it astropy.table.Table} that
-hold Numpy array data members. Numpy provides many functions for array-oriented
-computing and numerics, and Astropy provides astronomy-specific functionality.
-The Astropy functionality most commonly used in Gammapy is {\it astropy.io.fits}
-for FITS data I/O, {\it astropy.table.Table} as a container for tabular data
-(e.g. event lists, but also many other things like spectral points or source
-catalogs), {\it astropy.wcs.WCS} for world coordinate systems mapping pixel to
-sky coordinates, as well as {\it astropy.coordinates.SkyCoord} and {\it
-astropy.time.Time} objects to represent sky coordinates and times.
-Astropy.coordinates  as well as astropy.time are built on ERFA (\urlErfa), the
-open-source variant of this IAU Standards of Fundamental Astronomy (SOFA) C
-library (\urlSofa). In Gammapy, we use {\it astropy.units.Quantity} objects
-extensively, where a quantity is a Numpy array with a unit attached, supporting
-arithmetic in computations and making it easier to read and write code that does
-computations involving physical quantities.
+such as \textit{astropy.coordinates.SkyCoord} or \textit{astropy.table.Table}
+that hold Numpy array data members. Numpy provides many functions for
+array-oriented computing and numerics, and Astropy provides astronomy-specific
+functionality. The Astropy functionality most commonly used in Gammapy is
+\textit{astropy.io.fits} for FITS data I/O, \textit{astropy.table.Table} as a
+container for tabular data (e.g. event lists, but also many other things like
+spectral points or source catalogs), \textit{astropy.wcs.WCS} for world
+coordinate systems mapping pixel to sky coordinates, as well as
+\textit{astropy.coordinates.SkyCoord} and \textit{astropy.time.Time} objects to
+represent sky coordinates and times. Astropy.coordinates  as well as
+astropy.time are built on ERFA (\urlErfa), the open-source variant of this IAU
+Standards of Fundamental Astronomy (SOFA) C library (\urlSofa). In Gammapy, we
+use \textit{astropy.units.Quantity} objects extensively, where a quantity is a
+Numpy array with a unit attached, supporting arithmetic in computations and
+making it easier to read and write code that does computations involving
+physical quantities.
 
 As an example, a script that generates a counts image from an event list using
 Gammapy is shown in Figure~\ref{fig:code_example}. The point we want to make
 here is that it is possible to efficiently work with events and pixels and to
 implement algorithms from Python, by storing all data in Numpy arrays and
 processing via calls into existing C extensions in Numpy and Astropy. E.g. here
-{\it EventList} stores the RA and DEC columns from the event list as Numpy
-arrays, and {\it SkyImage} the pixel data as well, and {\it image.fill(events)},
-and all processing happens in existing C extensions implemented or wrapped in
-Numpy and Astropy. In this example, the {\it read} and {\it write} methods call
-into {\it astropy.io.fits} which calls into CFITSIO (\cite{cfitsio}), and the
-{\it image.fill(events)} method calls into {\it astropy.wcs.WCS} and WCSLib
-(\cite{wcslib}) as well as {\it numpy.histogramdd}. 
+\textit{EventList} stores the RA and DEC columns from the event list as Numpy
+arrays, and \textit{SkyImage} the pixel data as well, and
+\textit{image.fill(events)}, and all processing happens in existing C extensions
+implemented or wrapped in Numpy and Astropy. In this example, the \textit{read}
+and \textit{write} methods call into \textit{astropy.io.fits} which calls into
+CFITSIO (\cite{cfitsio}), and the \textit{image.fill(events)} method calls into
+\textit{astropy.wcs.WCS} and WCSLib (\cite{wcslib}) as well as
+\textit{numpy.histogramdd}. 
 
 \begin{figure}[t]
 \centering
@@ -343,9 +345,9 @@ integration and interpolation, Matplotlib \cite{matplotlib} for plotting and
 Sherpa \cite{sherpa2001, sherpa2009, sherpa2011} for modeling and fitting. In
 addition, the following packages are used at the moment for functionality that
 we expect to become available in the Astropy core package within the next year:
-{\it regions} (\urlRegions) to handle sky and pixel regions, {\it reproject}
-(\urlReproject) for reprojecting sky images and cubes and {\it healpy}
-(\urlHealpy) for HEALPix data handling. 
+\textit{regions} (\urlRegions) to handle sky and pixel regions,
+\textit{reproject} (\urlReproject) for reprojecting sky images and cubes and
+\textit{healpy} (\urlHealpy) for HEALPix data handling.
 
 \begin{figure}[t]
 \centering
@@ -366,11 +368,11 @@ support.
 
 Gammapy is distributed and installed in the usual way for Python packages. Each
 stable release is uploaded to the Python package index (\urlPypi), and
-downloaded and installed by users via {\it pip install gammapy} (\urlPip).
+downloaded and installed by users via \textit{pip install gammapy} (\urlPip).
 Binary packages for conda are available via the conda Astropy channel
 (\urlAnacondaGammapy) for Linux, Mac and Windows, which conda users can install
-via {\it conda install gammapy -c astropy}. Binary packages for the Macports
-package manager are also available, which users can install via {\it port
+via \textit{conda install gammapy -c astropy}. Binary packages for the Macports
+package manager are also available, which users can install via \textit{port
 install gammapy}. At this time, Gammapy is also available as a Gentoo Linux
 package (\urlGentooGammapy) and a Debian Linux package is in preparation.
 
